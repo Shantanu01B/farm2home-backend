@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // CORS setup for local dev (add your deployed frontend URL when you deploy)
 const allowedOrigins = [
     'http://localhost:5173', // Vite dev server (local frontend)
-    // 'https://your-frontend-domain.com', // <-- Uncomment and set after deploying frontend
+    'https://farm2home-frontend-9krm.vercel.app/', // <-- Uncomment and set after deploying frontend
 ];
 
 app.use(cors({
