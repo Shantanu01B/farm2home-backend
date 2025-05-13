@@ -12,10 +12,10 @@ const app = express();
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// CORS setup for local dev (add your deployed frontend URL when you deploy)
+// CORS setup for local dev and deployed frontend
 const allowedOrigins = [
     'http://localhost:5173', // Vite dev server (local frontend)
-    'https://farm2home-frontend-9krm.vercel.app/', // <-- Uncomment and set after deploying frontend
+    'https://farm2home-frontend-9krm.vercel.app' // Deployed frontend (NO trailing slash)
 ];
 
 app.use(cors({
@@ -28,7 +28,9 @@ app.use(cors({
         }
         return callback(null, true);
     },
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Use environment variable for MongoDB URI
